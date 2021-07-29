@@ -5,7 +5,7 @@ _base = Attraction("Casa", 0, [], Importance.NONE, 0)
 
 _dataset = Dataset(
     attractions=[
-        Attraction("Casa", 0, [], Importance.NONE, 0),
+        _base,
         Attraction("Spiaggia", 4, [Equipment.SWIMMING], Importance.HIGH, 0),
         Attraction("Catania", 5, [Equipment.CAMERA], Importance.MHI, 24.8),
         Attraction("Etna", 1, [Equipment.CAMERA, Equipment.TREKKING_SHOES], Importance.HIGH),
