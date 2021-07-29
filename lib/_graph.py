@@ -29,7 +29,8 @@ def get_graph(dataset: Dataset,
     return g
 
 
-def draw_graph(dataset: Dataset, min_importance: Importance, size: Tuple[int, int], seed: int) -> matplotlib.figure.Figure:
+def draw_graph(dataset: Dataset, min_importance: Importance,
+               size: Tuple[int, int], seed: int) -> matplotlib.figure.Figure:
     fig: matplotlib.figure.Figure
     fig = plt.figure(figsize=size)
     ax = fig.add_subplot()
