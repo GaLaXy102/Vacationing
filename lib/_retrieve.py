@@ -4,7 +4,7 @@ from typing import Dict, Tuple
 
 def get_attraction_by_name(name: str, attractions: frozenset[Attraction]) -> Attraction:
     # Search by name
-    for a in list_of_attractions:
+    for a in attractions:
         if a.name == name:
             return a
 
