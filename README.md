@@ -15,7 +15,7 @@ After all the lame research done, he began to draw graphs, where he highlighted
 attractions depending on his desire to visit them. Then he labelled the Edges with
 the duration it would take to get from attraction A to attraction B.
 
-Finally, he some nodes (by hand - how lame is that?) to match the following
+Finally, he clustered some nodes (by hand - how lame is that?) to match the following
 criteria: The total day may not exceed a given length, there may only be x days longer
 than ... hours, there may only be ... attractions a day... Furthermore, overwhelmed
 by the amount of things to do, he decided to visit one region of Sicily later and left
