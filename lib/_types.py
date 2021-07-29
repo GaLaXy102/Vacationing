@@ -1,6 +1,6 @@
 from enum import Enum, IntEnum
 from dataclasses import dataclass
-from typing import List, Dict, Tuple, Set
+from typing import List, Dict, Tuple, Set, Union
 
 
 class Importance(IntEnum):
@@ -56,3 +56,8 @@ class Dataset:
 class Region:
     dataset: Dataset
     clusters: List[Set[Attraction]]  # By now, clusters are selected by hand
+
+
+@dataclass
+class Itinerary:
+    steps: List[Union[Attraction, Ride]]

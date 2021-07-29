@@ -8,7 +8,7 @@ if __name__ == '__main__':
         duration = 0
         cost = 0
         equipment = set()
-        for step in itinerary:
+        for step in itinerary.steps:
             if isinstance(step, Attraction):
                 print("> A {}".format(step.name))
                 duration += step.time_est
