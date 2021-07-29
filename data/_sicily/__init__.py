@@ -3,7 +3,7 @@ from lib import get_attraction_by_name
 _base = Attraction("Casa", 0, set(), Importance.NONE, 0)
 
 _dataset = Dataset(
-    attractions=[
+    attractions=frozenset({
         _base,
         Attraction("Spiaggia", 4, {Equipment.SWIMMING}, Importance.HIGH, 0),
         Attraction("Catania", 5, {Equipment.CAMERA}, Importance.MHI, 24.8),
@@ -36,7 +36,7 @@ _dataset = Dataset(
         Attraction("Segesta", 4, {Equipment.CAMERA, Equipment.SWIMMING}, Importance.MID),
         Attraction("Selinunte", 2, {Equipment.CAMERA}, Importance.MID, 6),
         Attraction("Valle dei Templi", 4, {Equipment.CAMERA, Equipment.TREKKING_SHOES}, Importance.MID, 10)
-    ],
+    }),
     distances={
         # Base Cluster NE
         ("Casa", "Spiaggia"): 0.001,
@@ -134,33 +134,33 @@ _dataset = Dataset(
 # Selected by hand for now
 content = Region(
     dataset=_dataset,
-    clusters=[
-        {
+    clusters={
+        frozenset({
             get_attraction_by_name("Messina", _dataset.attractions),
             get_attraction_by_name("Tindari", _dataset.attractions)
-        }, {
+        }), frozenset({
             get_attraction_by_name("Spiaggia", _dataset.attractions)
-        }, {
+        }), frozenset({
             get_attraction_by_name("Taormina", _dataset.attractions),
             get_attraction_by_name("Giardini Naxos - Archeo", _dataset.attractions)
-        }, {
+        }), frozenset({
             get_attraction_by_name("Catania", _dataset.attractions)
-        }, {
+        }), frozenset({
             get_attraction_by_name("Gole del Alcantara", _dataset.attractions),
             get_attraction_by_name("Etna", _dataset.attractions),
             get_attraction_by_name("Pineta dei Monti Rossi", _dataset.attractions)
-        }, {
+        }), frozenset({
             get_attraction_by_name("Palermo", _dataset.attractions),
             get_attraction_by_name("Cefalù", _dataset.attractions)
-        }, {
+        }), frozenset({
             get_attraction_by_name("Siracusa - Ortigia", _dataset.attractions)
-        }, {
+        }), frozenset({
             get_attraction_by_name("Enna", _dataset.attractions),
             get_attraction_by_name("Caltagirone", _dataset.attractions),
             get_attraction_by_name("Piazza Armerina - Villa Romana del Casale", _dataset.attractions)
-        }, {
+        }), frozenset({
             get_attraction_by_name("Vendicari", _dataset.attractions),
             get_attraction_by_name("Cava Grande", _dataset.attractions)
-        }
-    ]
+        })
+    }
 )

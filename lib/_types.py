@@ -1,6 +1,6 @@
 from enum import Enum, IntEnum
 from dataclasses import dataclass
-from typing import List, Dict, Tuple, Set, Union
+from typing import List, Dict, Tuple, Set
 
 
 class Importance(IntEnum):
@@ -27,9 +27,6 @@ class ItineraryStep:
     duration: float
     price: float
     equipment: Set[Equipment]
-
-    def __format__(self, format_spec):
-        return format(self.duration, format_spec)
 
 
 @dataclass
@@ -68,7 +65,7 @@ class Ride(ItineraryStep):
 
 @dataclass
 class Dataset:
-    attractions: List[Attraction]
+    attractions: frozenset[Attraction]
     distances: Dict[Tuple[str, str], float]
     base: Attraction
 
@@ -76,12 +73,12 @@ class Dataset:
 @dataclass
 class Region:
     dataset: Dataset
-    clusters: List[Set[Attraction]]  # By now, clusters are selected by hand
+    clusters: Set[frozenset[Attraction]]  # By now, clusters are selected by hand
 
 
 @dataclass
 class Itinerary:
-    steps: List[Union[Attraction, Ride]]
+    steps: List[ItineraryStep]
 
     def __iter__(self):
         return iter(self.steps)

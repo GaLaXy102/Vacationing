@@ -5,7 +5,8 @@ from typing import List
 
 def get_itineraries(region: Region) -> List[Itinerary]:
     out = []
-    for cluster in region.clusters:
+    for immutable_cluster in region.clusters:
+        cluster = set(immutable_cluster)
         next_node = region.dataset.base, 0
         itinerary = Itinerary([next_node[0]])
         # We want a long first distance, shortest possible intermediate steps and a shorter last distance

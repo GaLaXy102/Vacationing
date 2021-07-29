@@ -1,8 +1,8 @@
 from ._types import Attraction
-from typing import Dict, Tuple, List
+from typing import Dict, Tuple
 
 
-def get_attraction_by_name(name: str, list_of_attractions: List[Attraction]) -> Attraction:
+def get_attraction_by_name(name: str, attractions: frozenset[Attraction]) -> Attraction:
     # Search by name
     for a in list_of_attractions:
         if a.name == name:
