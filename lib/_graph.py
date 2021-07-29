@@ -36,7 +36,7 @@ def draw_graph(dataset: Dataset, min_importance: Importance, size: Tuple[int, in
     g = get_graph(dataset, min_importance)
     pos = networkx.spring_layout(g, seed=seed)
     colors = [color_by_importance[n[1]] for n in g.nodes(data="imp")]
-    labels = {n: "{}\n{:1.1f}".format(n, get_attraction_by_name(n, dataset.attractions).time_est) for n in g.nodes}
+    labels = {n: "{}\n{:1.1f}".format(n, get_attraction_by_name(n, dataset.attractions).duration) for n in g.nodes}
     edge_labels = {e: "{:1.1f}".format(1/g.get_edge_data(*e)["weight"]) for e in g.edges}
     networkx.draw(g, pos, ax=ax, with_labels=True, labels=labels, node_color=colors)
     networkx.draw_networkx_edge_labels(g, pos, ax=ax, edge_labels=edge_labels)

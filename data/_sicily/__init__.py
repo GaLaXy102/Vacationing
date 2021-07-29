@@ -1,42 +1,41 @@
 from lib import Attraction, Importance, Equipment, Dataset, Region
 from lib import get_attraction_by_name
-
-_base = Attraction("Casa", 0, [], Importance.NONE, 0)
+_base = Attraction("Casa", 0, set(), Importance.NONE, 0)
 
 _dataset = Dataset(
     attractions=[
         _base,
-        Attraction("Spiaggia", 4, [Equipment.SWIMMING], Importance.HIGH, 0),
-        Attraction("Catania", 5, [Equipment.CAMERA], Importance.MHI, 24.8),
-        Attraction("Etna", 1, [Equipment.CAMERA, Equipment.TREKKING_SHOES], Importance.HIGH),
-        Attraction("Pineta dei Monti Rossi", 1, [Equipment.CAMERA, Equipment.TREKKING_SHOES], Importance.MID),
-        Attraction("Taormina", 3, [Equipment.CAMERA], Importance.HIGH),
-        Attraction("Giardini Naxos - Archeo", 3, [Equipment.CAMERA], Importance.MID),
-        Attraction("Gole del Alcantara", 3, [Equipment.CAMERA, Equipment.WATER_SHOES], Importance.HIGH, 24),
-        Attraction("Messina", 3, [Equipment.CAMERA], Importance.MLO),
+        Attraction("Spiaggia", 4, {Equipment.SWIMMING}, Importance.HIGH, 0),
+        Attraction("Catania", 5, {Equipment.CAMERA}, Importance.MHI, 24.8),
+        Attraction("Etna", 1, {Equipment.CAMERA, Equipment.TREKKING_SHOES}, Importance.HIGH),
+        Attraction("Pineta dei Monti Rossi", 1, {Equipment.CAMERA, Equipment.TREKKING_SHOES}, Importance.MID),
+        Attraction("Taormina", 3, {Equipment.CAMERA}, Importance.HIGH),
+        Attraction("Giardini Naxos - Archeo", 3, {Equipment.CAMERA}, Importance.MID),
+        Attraction("Gole del Alcantara", 3, {Equipment.CAMERA, Equipment.WATER_SHOES}, Importance.HIGH, 24),
+        Attraction("Messina", 3, {Equipment.CAMERA}, Importance.MLO),
         # Attraction(
-        #     "Reggio Calabro", 5, [Equipment.CAMERA], Importance.LOW
+        #     "Reggio Calabro", 5, {Equipment.CAMERA}, Importance.LOW
         # ),
-        Attraction("Tindari", 1, [Equipment.CAMERA], Importance.MLO),
-        Attraction("Siracusa - Ortigia", 7, [Equipment.CAMERA], Importance.HIGH),
-        Attraction("Caltagirone", 2, [Equipment.CAMERA], Importance.MLO),
-        Attraction("Enna", 2, [Equipment.CAMERA], Importance.MLO),
-        Attraction("Piazza Armerina - Villa Romana del Casale", 3, [Equipment.CAMERA], Importance.MID, 10),
-        Attraction("Noto", 2, [Equipment.CAMERA], Importance.LOW),
+        Attraction("Tindari", 1, {Equipment.CAMERA}, Importance.MLO),
+        Attraction("Siracusa - Ortigia", 7, {Equipment.CAMERA}, Importance.HIGH),
+        Attraction("Caltagirone", 2, {Equipment.CAMERA}, Importance.MLO),
+        Attraction("Enna", 2, {Equipment.CAMERA}, Importance.MLO),
+        Attraction("Piazza Armerina - Villa Romana del Casale", 3, {Equipment.CAMERA}, Importance.MID, 10),
+        Attraction("Noto", 2, {Equipment.CAMERA}, Importance.LOW),
         Attraction("Cava Grande", 5,
-                   [Equipment.CAMERA, Equipment.TREKKING_SHOES, Equipment.WATER_SHOES, Equipment.SWIMMING],
+                   {Equipment.CAMERA, Equipment.TREKKING_SHOES, Equipment.WATER_SHOES, Equipment.SWIMMING},
                    Importance.MLO),
-        Attraction("Vendicari", 4, [Equipment.CAMERA], Importance.MHI),
-        Attraction("Modica", 2, [Equipment.CAMERA], Importance.LOW),
-        Attraction("Palermo", 4, [Equipment.CAMERA], Importance.HIGH),
-        Attraction("Monte Pellegrino", 2, [Equipment.CAMERA, Equipment.TREKKING_SHOES], Importance.MID),
-        Attraction("Corleone", 2, [Equipment.CAMERA], Importance.MLO),
-        Attraction("Cefalù", 2, [Equipment.CAMERA], Importance.MID),
-        Attraction("Erice", 4, [Equipment.CAMERA], Importance.MID, 9),
-        Attraction("Scopello", 6, [Equipment.CAMERA], Importance.MHI, 5),
-        Attraction("Segesta", 4, [Equipment.CAMERA, Equipment.SWIMMING], Importance.MID),
-        Attraction("Selinunte", 2, [Equipment.CAMERA], Importance.MID, 6),
-        Attraction("Valle dei Templi", 4, [Equipment.CAMERA, Equipment.TREKKING_SHOES], Importance.MID, 10)
+        Attraction("Vendicari", 4, {Equipment.CAMERA}, Importance.MHI),
+        Attraction("Modica", 2, {Equipment.CAMERA}, Importance.LOW),
+        Attraction("Palermo", 4, {Equipment.CAMERA}, Importance.HIGH),
+        Attraction("Monte Pellegrino", 2, {Equipment.CAMERA, Equipment.TREKKING_SHOES}, Importance.MID),
+        Attraction("Corleone", 2, {Equipment.CAMERA}, Importance.MLO),
+        Attraction("Cefalù", 2, {Equipment.CAMERA}, Importance.MID),
+        Attraction("Erice", 4, {Equipment.CAMERA}, Importance.MID, 9),
+        Attraction("Scopello", 6, {Equipment.CAMERA}, Importance.MHI, 5),
+        Attraction("Segesta", 4, {Equipment.CAMERA, Equipment.SWIMMING}, Importance.MID),
+        Attraction("Selinunte", 2, {Equipment.CAMERA}, Importance.MID, 6),
+        Attraction("Valle dei Templi", 4, {Equipment.CAMERA, Equipment.TREKKING_SHOES}, Importance.MID, 10)
     ],
     distances={
         # Base Cluster NE

@@ -18,14 +18,30 @@ class Equipment(Enum):
     WATER_SHOES = "Water-proof Shoes"
     SWIMMING = "Swimming Gear"
 
+    def __str__(self):
+        return "+ {}".format(self.value)
+
 
 @dataclass
-class Attraction:
+class ItineraryStep:
+    duration: float
+    price: float
+    equipment: Set[Equipment]
+
+    def __format__(self, format_spec):
+        return format(self.duration, format_spec)
+
+
+@dataclass
+class Attraction(ItineraryStep):
     name: str
-    time_est: float
-    things: List[Equipment]
     importance: Importance
-    price: float = None
+
+    def __init__(self, name: str, duration: float, equipment: Set[Equipment], importance: Importance,
+                 price: float = None):
+        super(Attraction, self).__init__(duration, price, equipment)
+        self.name = name
+        self.importance = importance
 
     def __hash__(self) -> int:
         return hash(self.name)
@@ -36,13 +52,18 @@ class Attraction:
         except AttributeError:
             return False
 
+    def __str__(self):
+        return "> A {}".format(self.name)
+
 
 @dataclass
-class Ride:
-    duration: float
+class Ride(ItineraryStep):
 
-    def __add__(self, other):
-        return Ride(self.duration + other.duration)
+    def __init__(self, duration: float):
+        super(Ride, self).__init__(duration, None, {})
+
+    def __str__(self):
+        return "> R {:.2f} h".format(self.duration)
 
 
 @dataclass
@@ -61,3 +82,24 @@ class Region:
 @dataclass
 class Itinerary:
     steps: List[Union[Attraction, Ride]]
+
+    def __iter__(self):
+        return iter(self.steps)
+
+    def __str__(self):
+        equipment = set()
+        for step in self:
+            for eq in step.equipment:
+                equipment.add(eq)
+        return ("Steps:\n"
+                "{}\n"
+                "\n"
+                "Duration : {:5.2f} h\n"
+                "Cost     : {:5.2f} €\n"
+                "Equipment:\n"
+                "{}").format(
+            "\n".join(str(x) for x in self),
+            sum(x.duration for x in self),
+            sum(x.price or 0 for x in self),
+            "\n".join(str(x) for x in equipment)
+        )
