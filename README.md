@@ -29,12 +29,18 @@ These day routes are then written out with the following information:
 * Estimated cost of visits (not including rides)
 * What equipment he has to pack
 
+He also had an old thermal printer lying around and thought:
+What if I want to take the information with me in my wallet?
+So he wrote a little application wrapper to print his travel programme
+to his old printer.
+
 He hopes that this information will help him during his stay.
 
 ## Entrypoints to this programme
 
-`draw.py` - Draws a graph
-`programme.py` - Creates the holiday tours
+`draw.py` - Draws a graph  
+`programme.py` - Creates the holiday tours  
+`print_programme.py` - Prints the programme to a parallel printer or file
 
 Dependencies are managed using `pipenv`.
 Thus you may run the scripts using `pipenv run python3 <script>`
