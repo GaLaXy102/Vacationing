@@ -9,14 +9,14 @@ _dataset = Dataset(
         Attraction("Catania", 5, {Equipment.CAMERA}, Importance.MHI, 24.8),
         Attraction("Etna", 1, {Equipment.CAMERA, Equipment.TREKKING_SHOES}, Importance.HIGH),
         Attraction("Pineta dei Monti Rossi", 1, {Equipment.CAMERA, Equipment.TREKKING_SHOES}, Importance.MID),
-        Attraction("Taormina", 3, {Equipment.CAMERA}, Importance.HIGH),
-        Attraction("Giardini Naxos - Archeo", 3, {Equipment.CAMERA}, Importance.MID),
+        Attraction("Taormina", 3, {Equipment.CAMERA}, Importance.HIGH, 17),
+        Attraction("Giardini Naxos - Archeo", 3, {Equipment.CAMERA}, Importance.MID, 6),
         Attraction("Gole del Alcantara", 3, {Equipment.CAMERA, Equipment.WATER_SHOES}, Importance.HIGH, 24),
         Attraction("Messina", 3, {Equipment.CAMERA}, Importance.MLO),
         # Attraction(
         #     "Reggio Calabro", 5, {Equipment.CAMERA}, Importance.LOW
         # ),
-        Attraction("Tindari", 1, {Equipment.CAMERA}, Importance.MLO),
+        Attraction("Tindari", 1, {Equipment.CAMERA}, Importance.MLO, 6),
         Attraction("Siracusa - Ortigia", 7, {Equipment.CAMERA}, Importance.HIGH),
         Attraction("Caltagirone", 2, {Equipment.CAMERA}, Importance.MLO),
         Attraction("Enna", 2, {Equipment.CAMERA}, Importance.MLO),
