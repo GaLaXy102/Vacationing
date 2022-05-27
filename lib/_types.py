@@ -1,6 +1,6 @@
 from enum import Enum, IntEnum
 from dataclasses import dataclass
-from typing import List, Dict, Tuple, Set
+from typing import List, Dict, Tuple, Set, Optional
 
 
 class Importance(IntEnum):
@@ -33,12 +33,14 @@ class ItineraryStep:
 class Attraction(ItineraryStep):
     name: str
     importance: Importance
+    coordinates: Optional[Tuple[float, float]]
 
     def __init__(self, name: str, duration: float, equipment: Set[Equipment], importance: Importance,
-                 price: float = None):
+                 price: float = None, coordinates: Optional[Tuple[float, float]] = None):
         super(Attraction, self).__init__(duration, price, equipment)
         self.name = name
         self.importance = importance
+        self.coordinates = coordinates
 
     def __hash__(self) -> int:
         return hash(self.name)
