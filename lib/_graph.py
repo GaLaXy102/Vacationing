@@ -1,11 +1,10 @@
 import matplotlib.figure
-import networkx
 import matplotlib.pyplot as plt
 from typing import Tuple
 
 
 from ._types import Importance, Dataset
-from ._retrieve import get_attraction_by_name
+from .osm import get_coordinates
 
 
 color_by_importance = {
@@ -17,7 +16,7 @@ color_by_importance = {
     Importance.NONE: "gray"
 }
 
-
+"""
 def get_graph(dataset: Dataset,
               min_importance: Importance = Importance.NONE) -> networkx.Graph:
     v = [(a.name, {"imp": a.importance})
@@ -41,4 +40,26 @@ def draw_graph(dataset: Dataset, min_importance: Importance,
     edge_labels = {e: "{:1.1f}".format(1/g.get_edge_data(*e)["weight"]) for e in g.edges}
     networkx.draw(g, pos, ax=ax, with_labels=True, labels=labels, node_color=colors)
     networkx.draw_networkx_edge_labels(g, pos, ax=ax, edge_labels=edge_labels)
+    return fig
+"""
+
+
+def draw_graph(dataset: Dataset, min_importance: Importance,
+               size: Tuple[int, int], seed: int = None) -> matplotlib.figure.Figure:
+    ds_with_imp = [x for x in dataset.attractions if x.importance >= min_importance]
+    coords = list(map(list, zip(*[x.coordinates or get_coordinates(x.name) for x in ds_with_imp])))
+    colors = [color_by_importance[x.importance] for x in ds_with_imp]
+    labels = ["{}\n{:1.1f}".format(x.name, x.duration) for x in ds_with_imp]
+    fig: matplotlib.figure.Figure = plt.figure(figsize=size)
+    ax: matplotlib.figure.Axes = fig.add_subplot()
+    ax.scatter(
+        x=coords[1],
+        y=coords[0],
+        c=colors
+    )
+    for idx in range(len(ds_with_imp)):
+        ax.annotate(
+            text=labels[idx],
+            xy=(coords[1][idx], coords[0][idx])
+        )
     return fig
