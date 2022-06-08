@@ -4,7 +4,7 @@ services:
   nominatim:
     container_name: nominatim
     image: mediagis/nominatim:4.0
-    restart: always
+    restart: unless-stopped
     ports:
       - "8080:8080"
     environment:
@@ -14,6 +14,19 @@ services:
     volumes:
       - nominatim-data:/var/lib/postgresql/12/main
     shm_size: 1gb
+  osrm:
+    container_name: osrm
+    image: osrm/osrm-backend:latest
+    command:
+      - sh
+      - -c
+      - osrm-extract -p /opt/car.lua /data/centro-latest.osm.pbf && osrm-partition /data/centro-latest.osrm && osrm-customize /data/centro-latest.osrm && osrm-routed --algorithm mld /data/centro-latest.osrm
+    ports:
+      - "5000:5000"
+    volumes:
+      - osrm_data:/data
+      - ./centro-latest.osm.pbf:/data/centro-latest.osm.pbf:ro
 
 volumes:
   nominatim-data:
+  osrm_data:

@@ -8,6 +8,7 @@ networkx = "*"
 matplotlib = "*"
 numpy = "*"
 osmpythontools = "*"
+requests = "*"
 
 [dev-packages]
 

@@ -1,4 +1,5 @@
 from ._types import Attraction
+from .osm import get_distance as get_osm_distance
 from typing import Dict, Tuple
 
 
@@ -16,4 +17,4 @@ def get_distance(start: Attraction, end: Attraction,
     elif (end.name, start.name) in distance_map.keys():
         return distance_map[(end.name, start.name)]
     else:
-        return default
+        return round(get_osm_distance(start.name, end.name), 2)
