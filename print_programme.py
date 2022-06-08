@@ -34,4 +34,4 @@ def print_out(itinerary_list: List[Itinerary]):
 
 
 if __name__ == '__main__':
-    print_out(get_itineraries(data.sicily))
+    print_out(get_itineraries(data.tuscany))
